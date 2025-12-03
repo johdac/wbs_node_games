@@ -1,12 +1,13 @@
 const args = process.argv.slice(2);
 let words = args[0].split(" ");
 
+// Utility function
 const capitalizeWord = (word) => {
   if (word) return word[0].toUpperCase() + word.slice(1);
 };
 
 // The parameter i is the index
-words.map((word, i) => {
+words.forEach((word, i) => {
   // We remember if the word was capitalized but work on lower cased strings
   const wordWasUpper = word === capitalizeWord(word);
   word = word.toLowerCase();
@@ -29,6 +30,5 @@ words.map((word, i) => {
   if (wordWasUpper) newWord = capitalizeWord(newWord);
 
   // Print words
-  if (i !== words.length - 1) process.stdout.write(`${newWord} `);
-  else process.stdout.write(`${newWord}`);
+  process.stdout.write(i !== words.length - 1 ? `${newWord} ` : `${newWord}`);
 });
