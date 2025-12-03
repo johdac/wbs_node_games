@@ -5,7 +5,8 @@ const capitalizeWord = (word) => {
   if (word) return word[0].toUpperCase() + word.slice(1);
 };
 
-words.map((word) => {
+// The parameter i is the index
+words.map((word, i) => {
   // We remember if the word was capitalized but work on lower cased strings
   const wordWasUpper = word === capitalizeWord(word);
   word = word.toLowerCase();
@@ -26,5 +27,8 @@ words.map((word) => {
 
   // Restore capitalization
   if (wordWasUpper) newWord = capitalizeWord(newWord);
-  process.stdout.write(`${newWord} `);
+
+  // Print words
+  if (i !== words.length - 1) process.stdout.write(`${newWord} `);
+  else process.stdout.write(`${newWord}`);
 });
