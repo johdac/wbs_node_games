@@ -1,4 +1,9 @@
 const args = process.argv.slice(2);
+if (args.length !== 1) {
+  console.error("Wrong input. Use game like so: node main.js 'text to transform'");
+  process.exit(1);
+}
+
 let words = args[0].split(" ");
 
 // Utility function
